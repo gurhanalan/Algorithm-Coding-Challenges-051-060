@@ -64,3 +64,16 @@ function songDecoder(song) {
     return song.replace(/(WUB)+/g, " ").trim();
 }
 console.log(songDecoder("AWUBWUBWUBBWUBCWUB"));
+
+//////////////////////////////////////////
+// 54. REGEX "Extract the word 'coding' from this string."
+let testStr = "freeCodeCamp";
+let testRegex = /Code/;
+testRegex.test(testStr);
+console.log(testRegex.test(testStr)); //true
+
+let extractStr = "Extract the word 'coding' from this string.";
+let codingRegex = /coding/; // Change this line
+let result = extractStr.match(codingRegex); // Change this line
+console.log(result);
+//["coding", index: 18, input: "Extract the word 'coding' from this string.", groups: undefined]
