@@ -99,3 +99,43 @@ function iqTest(numbers) {
     if (odd.length === 1) return num.indexOf(odd[0]) + 1;
 }
 console.log(iqTest("1 2 1 1"));
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// 56. Format a string of names like 'Bart, Lisa & Maggie'. - codewars - 6kyu
+
+/* Given: an array containing hashes of names
+
+Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand.
+
+Example:
+
+list([ {name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'} ])
+// returns 'Bart, Lisa & Maggie'
+
+list([ {name: 'Bart'}, {name: 'Lisa'} ])
+// returns 'Bart & Lisa'
+
+list([ {name: 'Bart'} ])
+// returns 'Bart'
+
+list([])
+// returns ''
+Note: all the hashes are pre-validated and will only contain A-Z, a-z, '-' and '.'. */
+
+function list(names) {
+    const length = names.length;
+    if (length === 0) return "";
+    if (length === 1) return names[0]["name"];
+    if (length === 2) return `${names[0]["name"]} & ${names[1]["name"]}`;
+    if (length >= 3) {
+        let text = "";
+        for (let i = 0; i <= length - 3; i++) {
+            text += names[i]["name"] + ", ";
+        }
+
+        text += `${names[length - 2]["name"]} & ${names[length - 1]["name"]}`;
+        return text;
+    }
+}
+let result2 = list([{ name: "Bart" }, { name: "Lisa" }, { name: "Maggie" }]);
+console.log(result2);
