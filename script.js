@@ -139,3 +139,34 @@ function list(names) {
 }
 let result2 = list([{ name: "Bart" }, { name: "Lisa" }, { name: "Maggie" }]);
 console.log(result2);
+
+// 57. Unique In Order - codewars - 6kyu
+/* Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements.
+
+For example:
+
+uniqueInOrder('AAAABBBCCDAABBB') == ['A', 'B', 'C', 'D', 'A', 'B']
+uniqueInOrder('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
+uniqueInOrder([1,2,2,3,3])       == [1,2,3] */
+
+const uniqueInOrder2 = function (iterable) {
+    let arr = typeof iterable === "string" ? iterable.split("") : iterable;
+
+    return arr.filter((curr, i, arr) => {
+        if (curr !== arr[i + 1]) return curr;
+    });
+};
+
+const uniqueInOrder3 = function (iterable) {
+    return [...iterable].filter((curr, i, arr) => curr !== arr[i + 1]);
+};
+
+const uniqueInOrder4 = function (it) {
+    let arr1 = [];
+    return [...it].reduce((acc, curr, i, arr) => {
+        if (curr !== arr[i + 1]) acc.push(curr);
+        return acc;
+    }, []);
+};
+
+console.log(uniqueInOrder4("AAAABBBCCDAABBB"));
