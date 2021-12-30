@@ -140,6 +140,9 @@ function list(names) {
 let result2 = list([{ name: "Bart" }, { name: "Lisa" }, { name: "Maggie" }]);
 console.log(result2);
 
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// #############################################################
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 57. Unique In Order - codewars - 6kyu
 /* Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements.
 
@@ -190,3 +193,60 @@ function findUniq(arr) {
     }
 }
 console.log(findUniq([0, 0, 0.55, 0, 0]));
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// #############################################################
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// 59. Build Tower - codewars - 6kyu
+/* Build Tower
+Build Tower by the following given argument:
+number of floors (integer and always greater than 0).
+
+Tower block is represented as *
+
+Python: return a list;
+JavaScript: returns an Array;
+C#: returns a string[];
+PHP: returns an array;
+C++: returns a vector<string>;
+Haskell: returns a [String];
+Ruby: returns an Array;
+Lua: returns a Table;
+Have fun!
+
+for example, a tower of 3 floors looks like below
+
+[
+  '  *  ', 
+  ' *** ', 
+  '*****'
+]
+and a tower of 6 floors looks like below
+
+[
+  '     *     ', 
+  '    ***    ', 
+  '   *****   ', 
+  '  *******  ', 
+  ' ********* ', 
+  '***********'
+]
+ */
+function towerBuilder(n) {
+    const array = [];
+
+    for (let i = 0; i < n; i++) {
+        array.push(
+            "*"
+                .repeat(1 + 2 * i)
+                .padEnd(n + i, " ")
+                .padStart(2 * n - 1, " ")
+        );
+    }
+    return array;
+}
+
+console.log(towerBuilder(5));
+
+//
