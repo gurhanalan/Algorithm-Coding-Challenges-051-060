@@ -250,3 +250,48 @@ function towerBuilder(n) {
 console.log(towerBuilder(5));
 
 //
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// #############################################################
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// 60. Are they the "same"? - codewars - 6 kyu
+
+/* 
+Given two arrays a and b write a function comp(a, b) (orcompSame(a, b)) that checks whether the two arrays have the "same" elements, with the same multiplicities. "Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
+
+Examples
+Valid arrays
+a = [121, 144, 19, 161, 19, 144, 19, 11]  
+b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
+comp(a, b) returns true because in b 121 is the square of 11, 14641 is the square of 121, 20736 the square of 144, 361 the square of 19, 25921 the square of 161, and so on. It gets obvious if we write b's elements in terms of squares:
+
+a = [121, 144, 19, 161, 19, 144, 19, 11] 
+b = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19]
+Invalid arrays
+If, for example, we change the first number to something else, comp may not return true anymore:
+
+a = [121, 144, 19, 161, 19, 144, 19, 11]  
+b = [132, 14641, 20736, 361, 25921, 361, 20736, 361]
+comp(a,b) returns false because in b 132 is not the square of any number of a.
+
+a = [121, 144, 19, 161, 19, 144, 19, 11]  
+b = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
+comp(a,b) returns false because in b 36100 is not the square of any number of a.
+ */
+function comp(array1, array2) {
+    if (!array2) return false;
+    if (!array1) return false;
+    const sortedSqr = array2.map((num) => Math.sqrt(num)).sort((a, b) => a - b);
+    const sortedArr1 = array1.sort((a, b) => a - b);
+    console.log(sortedSqr);
+    console.log(sortedArr1);
+    for (let i = 0; i < sortedSqr.length; i++) {
+        if (sortedSqr[i] !== sortedArr1[i]) return false;
+    }
+    return true;
+}
+console.log(
+    comp(
+        [5, 1, 4, 0, 3, 4, 3, 2, 5, 8, 1, 10],
+        [100, 16, 1, 1, 16, 4, 1, 9, 64, 25, 25, 9]
+    )
+);
